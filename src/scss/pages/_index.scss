@@ -1,3 +1,17 @@
 .body {
     height: 100vh;
 }
+
+.main--container {
+    height: 80vh;
+    &--section{
+        display: grid;
+        grid-template-columns: 30% 70%;
+    }
+    &--favs {
+       grid-column: span 1;
+    }
+    &--list{
+        grid-column: span 3;
+    }
+}
