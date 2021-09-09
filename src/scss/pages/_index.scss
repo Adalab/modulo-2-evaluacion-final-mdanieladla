@@ -1,0 +1,16 @@
+.container__main {
+    margin: 30px;
+    background-color: lightblue;
+    &--title{
+        font-size: 26px;
+        font-weight: bold;
+        text-align: center;
+    }
+    &--btn{
+        margin: 20px 0 0 0px;
+    }
+}
+
+.input {
+    background-color: lightcyan;
+}
