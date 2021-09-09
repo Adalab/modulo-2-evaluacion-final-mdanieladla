@@ -1,6 +1,10 @@
-.header{
-    margin-top: 20px;
+.header__container{
+    height: 10vh;
+    background-color: lightpink;
+    &--title{
+    padding-top: 10px;
     text-align: center;
-    font-size: 26px;
+    font-size: 28px;
     font-weight: bold;
+    }
 }
