@@ -14,3 +14,11 @@
 .input {
     background-color: lightcyan;
 }
+
+.section__favs {
+    margin: 20px 0 0 0;
+    background-color: lightgoldenrodyellow;
+    &--title {
+        font-size: 18px;
+    }
+}
