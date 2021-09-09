@@ -7,35 +7,37 @@ const seriesList = document.querySelector('.js-series-list');
 const info = document.querySelector('.js-input');
 //cogemos el valor que escribe el usuario en el input
 const getInfo = info.value;
-//url + valor que mete el usuario
-const url = 'http://api.tvmaze.com/search/shows?q=' + getInfo;
-//`http://api.tvmaze.com/search/shows?q=${getInfo}`;
+//url + valor que mete el usuario ->`http://api.tvmaze.com/search/shows?q=${getInfo}`;
+const url = 'http://api.tvmaze.com/search/shows?q=girls';
 //traemos el botón de HTML
 const btn = document.querySelector('.js-btn');
 
-/*function paintSeries() {
+
+function paintSeries() {
+  let html = '';
   for (const serie of series) {
    console.log(serie);
+   html += `<li class="js-series section__series--serie">`;
+   html += `<h3 class="name-serie">${serie.show}</h3>`;
+   html += `<img src="${serie.image}"`;
+   html += `</li>`;
     }
+    seriesList.innerHTML = html;
 }
-
-*/
 
 
 //NO FUNCIONA METER EL INPUT QUE QUIERAS Y QUE TE DEVUELVA LA SERIE
-
 //peticion al servidor
-function prueba() {
+function handleGetInfoSeries() {
   fetch(url)
     .then(response => response.json())
     .then(data => {
-      console.log(data);
       series = data;
+      paintSeries();
     });
 }
 
-
-btn.addEventListener('click', prueba);
+btn.addEventListener('click', handleGetInfoSeries);
 
 /*
 const btn = document.querySelector('.js-btn');
