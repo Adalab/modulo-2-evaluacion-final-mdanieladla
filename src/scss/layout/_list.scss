@@ -3,4 +3,18 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+    &--li{
+    border: 2px solid lightcoral;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+}
+
+.serie-title{
+    text-align: center;
+    font-weight: bold;
+}
+
+.serie-img{
+   margin-bottom: 10px;
 }
