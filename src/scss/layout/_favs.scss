@@ -3,3 +3,17 @@
     flex-direction: column;
     justify-content: flex-start;
 }
+
+.li--fav {
+    text-align: center;
+    font-weight: bold;
+    color: blueviolet;
+    margin-bottom: 10px;
+    //background-color: rgba(196, 212, 255, 0.5);
+    border: 3px solid rgba(70, 155, 252, 0.5);
+}
+
+.img-fav {
+    margin-bottom: 10px;
+    padding: 10px;
+}
