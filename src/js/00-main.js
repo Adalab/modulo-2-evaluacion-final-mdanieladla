@@ -4,6 +4,8 @@ let series = [];
 let seriesFavs = [];
 //donde voy a pintar mis series
 let seriesList = document.querySelector('.js-series-list');
+//donde voy a pintar mis series favoritas
+const seriesFavourites = document.querySelector('.js-favs');
 //traemos el input del HTML
 const input = document.querySelector('.js-input');
 //traemos el botón de HTML
@@ -80,22 +82,22 @@ function listenSerie() {
 
 //pintar favs
 function paintFavs() {
-  let FavsSeriesHtml = '';
+  let favSeriesHtml = '<li class="title-fav">Series favoritas: </li>';
   for (const fav of seriesFavs) {
     let title = fav.show.name;
     let id = fav.show.id;
     let img = fav.show.image;
     let imgDefault = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
     if (img === null) {
-      const html = `<li class="list--li js-serieBox" id="${id}"><img src="${imgDefault}" width="350" height="350" class="serie-img"/><h3 class="serie-title">${title}</h3></li>`;
-      FavsSeriesHtml.innerHTML += html;
+      img = imgDefault;
     } else {
       img = fav.show.image.medium;
-      const html =  `<li class="list--li js-serieBox" id="${id}"><img src="${img}" width="350" height="350" class="serie-img"/><h3 class="serie-title">${title}</h3></li>`;
-      FavsSeriesHtml += html;
     }
+    favSeriesHtml += `<li class="list--li js-serieBox" id="${id}">`;
+    favSeriesHtml += `<img src="${img}" width="350" height="350" class="serie-img"/>`;
+    favSeriesHtml += `<h3 class="serie-title">${title}</h3></li>`;
   }
-  
+  seriesFavourites.innerHTML = favSeriesHtml;
 }
 
 //funcion para llamar a la api
