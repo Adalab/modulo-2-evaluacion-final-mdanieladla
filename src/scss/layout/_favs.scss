@@ -1,9 +1,5 @@
-.section__container1{
+.fav-list {
     display: flex;
     flex-direction: column;
-    &--fav-list{
-        justify-content: space-around;
-        align-content: flex-start;
-        align-items: flex-start;
-    }
+    justify-content: flex-start;
 }
