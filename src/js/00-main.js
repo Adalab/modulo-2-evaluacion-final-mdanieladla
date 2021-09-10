@@ -48,13 +48,15 @@ btn.addEventListener('click', preventBtn);
 
 //funcion para que me diga donde he hecho click
 function handleClickEv(ev) {
+  // eslint-disable-next-line no-console
   console.log(ev.currentTarget);
+  // eslint-disable-next-line no-console
   console.log(ev.currentTarget.id);
-//obtener el id de la serie clickada
+  //obtener el id de la serie clickada
   const serieId = parseInt(ev.currentTarget.id);
-//busco la serie clickada en el array de series
+  //busco el id de la serie clickada en el array de series
   const serieClicked = series.find(  serieObject  =>   serieObject.show.id ===  serieId   );
-//busco si la serie clickada esta en el array de favs
+  //busco si la serie clickada esta en el array de favs
   const favsFound = seriesFavs.findIndex((fav) => {
     return fav.id === serieId;
   });
@@ -66,6 +68,8 @@ function handleClickEv(ev) {
     seriesFavs.splice(favsFound, 1);
   }
   paintFavs();
+  /*let serieClickada = ev.currentTarget.id;
+  serieClickada.classList.toggle('li--fav');*/
 }
 
 //funcion para clickar sobre el li que contiene la serie
@@ -75,10 +79,6 @@ function listenSerie() {
     serieLi.addEventListener('click', handleClickEv);
   }
 }
-
-
-//comprobar si la serie clickada esta dentro de favs
-
 
 //pintar favs
 function paintFavs() {
@@ -93,9 +93,10 @@ function paintFavs() {
     } else {
       img = fav.show.image.medium;
     }
-    favSeriesHtml += `<li class="list--li js-serieBox" id="${id}">`;
-    favSeriesHtml += `<img src="${img}" width="350" height="350" class="serie-img"/>`;
-    favSeriesHtml += `<h3 class="serie-title">${title}</h3></li>`;
+    favSeriesHtml += `<li class=" js-serieBox" id="${id}">`;
+    favSeriesHtml += `<img src="${img}" width="250" height="250" class="img-fav />`;
+    favSeriesHtml += `<h3 class="serie-title">${title}</h3>`;
+    favSeriesHtml += `</li>`;
   }
   seriesFavourites.innerHTML = favSeriesHtml;
 }
@@ -111,3 +112,5 @@ function getApi() {
       paintSeries();
     });
 }
+
+//almacenar listado de series favs en localStorage
