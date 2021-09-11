@@ -1,7 +1,13 @@
 <main class="main__container">
-  <form>
-    <input type="text" class="js-input" />
-    <input type="button" value="Buscar" class="js-btn" />
+  <form class="form__container">
+    <fieldset class="form__container--fieldset">
+      <input
+        type="text"
+        class="js-input form__container--input"
+        placeholder="Ej: Breaking Bad"
+      />
+      <input type="button" value="Buscar" class="js-btn form__container--btn" />
+    </fieldset>
   </form>
   <section class="section__container">
     <include src="./favs.html"></include>
