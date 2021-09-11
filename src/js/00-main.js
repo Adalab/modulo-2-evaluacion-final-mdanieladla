@@ -87,6 +87,7 @@ function handleClickEv(ev) {
   }
   paintFavs();
   paintSeries();
+  setLocalStorage();
 }
 
 //funcion para clickar sobre el li que contiene la serie
@@ -110,12 +111,19 @@ function paintFavs() {
     } else {
       img = fav.show.image.medium;
     }
-    favSeriesHtml += `<li class=" js-serieBox" id="${id}">`;
-    favSeriesHtml += `<img src="${img}" width="250" height="250" class="img-fav />`;
+    favSeriesHtml += `<li class="list--li js-serieBox" id="${id}">`;
+    favSeriesHtml += `<img src="${img}" width="250" height="250" class="img-fav" />`;
     favSeriesHtml += `<h3 class="serie-title">${title}</h3>`;
     favSeriesHtml += `</li>`;
   }
   seriesFavourites.innerHTML = favSeriesHtml;
+}
+
+//funcion para añadir la info al local storage
+function setLocalStorage() {
+  const stringSeries = JSON.stringify(seriesFavs);
+  //añadimos a LS los datos
+  localStorage.setItem('seriesFavs', stringSeries);
 }
 
 //funcion para llamar a la api
@@ -127,19 +135,28 @@ function getApi() {
     .then(data => {
       series = data;
       paintSeries();
+      setLocalStorage();
     });
 }
 
-//almacenar listado de series favs en localStorage
-/*
+//almacenar listado de series favs en localStorage para no tener que hacer peticion al servidor cada vez que cargue la página
 function getLocalStorage() {
-
-Obtenemos lo que hay en el localStorage (con getItem)
-
-Preguntamos si lo que me ha devuelto está vacío o no
-
-Si está vacío ejecutamos el fetch
-Si no está vacío pintamos lo que está en el LS
+//Obtenemos lo que hay en el localStorage (con getItem)
+  const localStorageSeries = localStorage.getItem('seriesFavs');
+  //comprobar si tengo datos o es la primera vez que entro a la página
+  if (localStorageSeries === null) {
+    //no tengo datos asi que llamo al API
+    getApi();
+  } else {
+    //si tengo datos en el LS, los parseo a un array
+    const arrayFavs = JSON.parse(localStorageSeries);
+    //y los guardo en la variable global de series favoritas
+    seriesFavs = arrayFavs;
+    //cada vez que modifico los arrays de sries favoritas lo vuelvo a pintar y a escuchar eventos.
+    paintFavs();
+  }
 
 }
-*/
+
+//start app, cuando se carga la página
+getLocalStorage();
