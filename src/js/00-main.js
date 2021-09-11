@@ -19,10 +19,29 @@ function handleGetInfoSeries() {
 
 btn.addEventListener('click', handleGetInfoSeries);
 
+//funcion para buscar si la serie se encuentra dentro de favoritos o no
+function isFav(serie){
+  const favoriteFound = seriesFavs.find((fav) => {
+    return fav.show.id === serie.show.id;
+  });
+  if (favoriteFound === undefined) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
 //funcion para pintar las series
 function paintSeries() {
   let html = '';
+  let favClass = '';
   for (const serie of series) {
+    const isFavorite = isFav(serie);
+    if (isFavorite) {
+      favClass = 'color-fav';
+    } else {
+      favClass = '';
+    }
     const serieTitle = serie.show.name;
     let img = serie.show.image;
     let imgDefault = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
@@ -31,7 +50,7 @@ function paintSeries() {
     } else {
       img = serie.show.image.medium;
     }
-    html += `<li class="list--li js-serieBox" id="${serie.show.id}">`;
+    html += `<li class="list--li js-serieBox ${favClass}" id="${serie.show.id}">`;
     html += `<img src="${img}" width="350" height="350" class="serie-img"/>`;
     html += `<h3 class="serie-title">${serieTitle}</h3>`;
     html += `</li>`;
@@ -66,8 +85,8 @@ function handleClickEv(ev) {
   } else {
     seriesFavs.splice(favsFound, 1);
   }
-  console.log(seriesFavs);
   paintFavs();
+  paintSeries();
 }
 
 //funcion para clickar sobre el li que contiene la serie
@@ -112,3 +131,15 @@ function getApi() {
 }
 
 //almacenar listado de series favs en localStorage
+/*
+function getLocalStorage() {
+
+Obtenemos lo que hay en el localStorage (con getItem)
+
+Preguntamos si lo que me ha devuelto está vacío o no
+
+Si está vacío ejecutamos el fetch
+Si no está vacío pintamos lo que está en el LS
+
+}
+*/
