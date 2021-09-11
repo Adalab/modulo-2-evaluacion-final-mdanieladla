@@ -8,6 +8,12 @@
       href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./assets/css/main.css" />
     <!--<link rel="icon" href="./assets/images/favicon.png" /> BUSCAR FAVICON PERSONALIZADO-->
   </head>
@@ -18,9 +24,15 @@
     </header>
 
     <main class="main__container">
-      <form>
-        <input type="text" class="js-input" />
-        <input type="button" value="Buscar" class="js-btn" />
+      <form class="form__container">
+        <fieldset class="form__container--fieldset">
+          <input
+            type="text"
+            class="js-input form__container--input"
+            placeholder="Ej: Breaking Bad"
+          />
+          <input type="button" value="Buscar" class="js-btn form__container--btn" />
+        </fieldset>
       </form>
       <section class="section__container">
         <ul class="fav-list js-favs"></ul>
@@ -30,25 +42,7 @@
           <li class="list--li">
             <img src="${img}" width="300" height="300" />`
             <h3 class="serie-title">${serieTitle}</h3>;
-          </li>
-          <li>
-            <img
-              src="https://images.unsplash.com/photo-1631206757490-f49eddf2c3b4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80"
-              width="100"
-              height="100"
-              alt=""
-            />
-            MAMMA MIA
-          </li>
-          <li>
-            <img
-              src="https://images.unsplash.com/photo-1631206757490-f49eddf2c3b4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80"
-              width="100"
-              height="100"
-              alt=""
-            />
-            GIRLS
-          </li> -->
+          </li>-->
         </ul>
 
       </section>
