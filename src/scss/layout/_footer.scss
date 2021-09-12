@@ -1,4 +1,9 @@
 .footer__container {
+    height: 40px;
     text-align: right;
     font-size: 12px;
+    background-color: rgba(143, 182, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
