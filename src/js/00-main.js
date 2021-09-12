@@ -112,8 +112,9 @@ function paintFavs() {
       img = fav.show.image.medium;
     }
     favSeriesHtml += `<li class="list--li js-serieBox" id="${id}">`;
-    favSeriesHtml += `<img src="${img}" width="250" height="250" class="img-fav" />`;
+    favSeriesHtml += `<img src="${img}" width="200" height="200" class="img-fav" />`;
     favSeriesHtml += `<h3 class="serie-title">${title}</h3>`;
+    favSeriesHtml += `<button class="js-delete-btn delete-btn">X</button>`;
     favSeriesHtml += `</li>`;
   }
   seriesFavourites.innerHTML = favSeriesHtml;
