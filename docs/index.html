@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Buscador de series</title>
+    <!--Fuente Fontawesome-->
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <!--Fuentes de Google Fonts-->
     <link
       href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
       rel="stylesheet"
@@ -40,20 +48,23 @@
         </fieldset>
       </form>
       <section class="section__container">
-        <ul class="fav-list js-favs">
-          <li>Series favoritas:</li>
-        </ul>
+        <section class="fav-list js-favs">
+          <ul class="">
+            <li>Series favoritas:</li>
+          </ul>
+          <i class="fas fa-trash-alt js-icon"></i>
+        </section>
 
-        <ul class="list js-series-list">
-          <!--Este código lo pintamos con JS
-          <li class="list--li">
-            <img src="${img}" width="300" height="300" />`
-            <h3 class="serie-title">${serieTitle}</h3>;
-          </li>-->
-        </ul>
+        <section class="list js-series-list">
+          <ul></ul>
+        </section>
 
       </section>
     </main>
+
+    <footer class="footer__container">
+      <small> &copy; Todos los derechos reservados.</small>
+    </footer>
 
     <script src="./assets/js/main.js"></script>
   </body>
