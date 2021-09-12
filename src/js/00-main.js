@@ -11,6 +11,8 @@ const seriesFavourites = document.querySelector('.js-favs');
 const input = document.querySelector('.js-input');
 //traemos el botón de HTML
 const btn = document.querySelector('.js-btn');
+//traemos el botón de reset de HTML
+const resetBtn = document.querySelector('.js-btn-delete');
 
 //funcion para que al pulsar el botón llame a la api
 function handleGetInfoSeries() {
@@ -99,21 +101,20 @@ function listenSerie() {
 }
 
 //funcion para eliminar los favs desde el botón X de cada uno
+//NO FUNCIONA, FALLA ALGO PERO AUN NO SE EL QUE
 /*
-FUNCIONA SOLO SI SE LLAMA A ESTA FUNCTION DESDE LA CONSOLA, LLAMANDOLA DESDE AQUI DEL CODIGO NO FUNCIONA
 function deleteFavSerie() {
   const deleteBtn = document.querySelectorAll('.js-delete-btn');
   for (const removeBtn of deleteBtn) {
     removeBtn.addEventListener('click', removeMe);
   }
-  console.log(deleteBtn);
 }
 
 function removeMe() {
   this.closest('li').remove();
+  //localStorage.removeItem('seriesFavs'); esto me lo borra del LS, pero todas, no solo la clickada.
 }
 
-deleteFavSerie();
 */
 
 //pintar favs
@@ -174,8 +175,15 @@ function getLocalStorage() {
     //cada vez que modifico los arrays de sries favoritas lo vuelvo a pintar y a escuchar eventos.
     paintFavs();
   }
-
 }
 
 //start app, cuando se carga la página
 getLocalStorage();
+
+
+//función para hacer que me refresque la página al darle al boton de reset
+function handleClickResetBtn() {
+  location.reload();
+}
+
+resetBtn.addEventListener('click', handleClickResetBtn);
