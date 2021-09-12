@@ -98,6 +98,24 @@ function listenSerie() {
   }
 }
 
+//funcion para eliminar los favs desde el botón X de cada uno
+/*
+FUNCIONA SOLO SI SE LLAMA A ESTA FUNCTION DESDE LA CONSOLA, LLAMANDOLA DESDE AQUI DEL CODIGO NO FUNCIONA
+function deleteFavSerie() {
+  const deleteBtn = document.querySelectorAll('.js-delete-btn');
+  for (const removeBtn of deleteBtn) {
+    removeBtn.addEventListener('click', removeMe);
+  }
+  console.log(deleteBtn);
+}
+
+function removeMe() {
+  this.closest('li').remove();
+}
+
+deleteFavSerie();
+*/
+
 //pintar favs
 function paintFavs() {
   let favSeriesHtml = '<li class="title-fav">Series favoritas: </li>';
