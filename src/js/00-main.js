@@ -55,7 +55,7 @@ function paintSeries() {
       img = serie.show.image.medium;
     }
     html += `<li class="list--li js-serieBox ${favClass}" id="${serie.show.id}">`;
-    html += `<img src="${img}" width="300" height="300" class="serie-img"/>`;
+    html += `<img src="${img}" width="350" height="350" class="serie-img"/>`;
     html += `<h3 class="serie-title">${serieTitle}</h3>`;
     html += `</li>`;
   }
