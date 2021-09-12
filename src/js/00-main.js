@@ -101,21 +101,26 @@ function listenSerie() {
 }
 
 //funcion para eliminar los favs desde el botón X de cada uno
-//NO FUNCIONA, FALLA ALGO PERO AUN NO SE EL QUE
-/*
 function deleteFavSerie() {
   const deleteBtn = document.querySelectorAll('.js-delete-btn');
   for (const removeBtn of deleteBtn) {
-    removeBtn.addEventListener('click', removeMe);
+    removeBtn.addEventListener('click', deleteFavorite);
   }
 }
 
-function removeMe() {
-  this.closest('li').remove();
-  //localStorage.removeItem('seriesFavs'); esto me lo borra del LS, pero todas, no solo la clickada.
+//funcion para saber cual es el id de la serie que clickamos para quitar de favoritos y poder quitar del LS el que coincida con el ID que clickamos.
+function deleteFavorite(ev) {
+  const selectedSerieId = parseInt(ev.currentTarget.id);
+  const clickedSerie = seriesFavs.findIndex((fav) => {
+    return fav.show.id === selectedSerieId;
+  });
+  if (clickedSerie !== -1) {
+    seriesFavs.splice(clickedSerie, 1);
+  }
+  paintFavs();
+  paintSeries();
+  setLocalStorage();
 }
-
-*/
 
 //pintar favs
 function paintFavs() {
@@ -174,6 +179,7 @@ function getLocalStorage() {
     seriesFavs = arrayFavs;
     //cada vez que modifico los arrays de sries favoritas lo vuelvo a pintar y a escuchar eventos.
     paintFavs();
+    deleteFavSerie();
   }
 }
 
