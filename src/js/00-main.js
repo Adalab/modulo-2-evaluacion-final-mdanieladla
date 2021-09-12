@@ -13,6 +13,8 @@ const input = document.querySelector('.js-input');
 const btn = document.querySelector('.js-btn');
 //traemos el botón de reset de HTML
 const resetBtn = document.querySelector('.js-btn-delete');
+//traemos el icono de HTML
+//const deleteIcon = document.querySelector('.js-icon');
 
 //funcion para que al pulsar el botón llame a la api
 function handleGetInfoSeries() {
@@ -100,6 +102,28 @@ function listenSerie() {
   }
 }
 
+//pintar favs
+function paintFavs() {
+  let favSeriesHtml = '<li class="title-fav">Series favoritas: </li>';
+  for (const fav of seriesFavs) {
+    let title = fav.show.name;
+    let id = fav.show.id;
+    let img = fav.show.image;
+    let imgDefault = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
+    if (img === null) {
+      img = imgDefault;
+    } else {
+      img = fav.show.image.medium;
+    }
+    favSeriesHtml += `<li class="li--fav js-serieBox" id="${id}">`;
+    favSeriesHtml += `<img src="${img}" width="200" height="200" class="img-fav" />`;
+    favSeriesHtml += `<h3 class="serie-title">${title}</h3>`;
+    favSeriesHtml += `<button class="js-delete-btn delete-btn">X</button>`;
+    favSeriesHtml += `</li>`;
+  }
+  seriesFavourites.innerHTML = favSeriesHtml;
+}
+
 //funcion para eliminar los favs desde el botón X de cada uno
 function deleteFavSerie() {
   const deleteBtn = document.querySelectorAll('.js-delete-btn');
@@ -122,27 +146,15 @@ function deleteFavorite(ev) {
   setLocalStorage();
 }
 
-//pintar favs
-function paintFavs() {
-  let favSeriesHtml = '<li class="title-fav">Series favoritas: </li>';
-  for (const fav of seriesFavs) {
-    let title = fav.show.name;
-    let id = fav.show.id;
-    let img = fav.show.image;
-    let imgDefault = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
-    if (img === null) {
-      img = imgDefault;
-    } else {
-      img = fav.show.image.medium;
-    }
-    favSeriesHtml += `<li class="li--fav js-serieBox" id="${id}">`;
-    favSeriesHtml += `<img src="${img}" width="200" height="200" class="img-fav" />`;
-    favSeriesHtml += `<h3 class="serie-title">${title}</h3>`;
-    favSeriesHtml += `<button class="js-delete-btn delete-btn">X</button>`;
-    favSeriesHtml += `</li>`;
-  }
-  seriesFavourites.innerHTML = favSeriesHtml;
+//funcion para borrar todas la series que están en favoritos a la vez pulsando un solo boton ¿?
+/*NO ME BORRA LAS FAVS DE LA WEB PERO SI DEL LS
+function deleteAllFavs() {
+  setLocalStorage();
+  localStorage.clear();
 }
+
+deleteIcon.addEventListener('click', deleteAllFavs);
+*/
 
 //funcion para añadir la info al local storage
 function setLocalStorage() {
