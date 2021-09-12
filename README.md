@@ -26,6 +26,8 @@ Mi trabajo se encuentra en el repositorio de Github Pages. Puedes encontrar el l
 
 - Main compuesto de dos secciones: un formulario con un input de texto para introducir la serie que se desea buscar y un botón para buscarla; y por otra parte una sección dividida en dos: a la izquierda las series que el usuario tiene marcadas como favoritas y en la parte de la derecha las series que existen en la API y salen en la web cuando el usuario hace la búsqueda.
 
+- Footer con copyright.
+
 - Tecnologías usadas:
   Lenguages HTML, CSS y JavaScript. A través del Starter Kit de Adalab me ha sido posible usar el preprocesador de CSS: SASS, así como diferentes herramientas de automatización de tareas como los partials y gulp.
 - Como se instala:
