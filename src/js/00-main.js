@@ -53,7 +53,7 @@ function paintSeries() {
       img = serie.show.image.medium;
     }
     html += `<li class="list--li js-serieBox ${favClass}" id="${serie.show.id}">`;
-    html += `<img src="${img}" width="350" height="350" class="serie-img"/>`;
+    html += `<img src="${img}" width="300" height="300" class="serie-img"/>`;
     html += `<h3 class="serie-title">${serieTitle}</h3>`;
     html += `</li>`;
   }
@@ -130,7 +130,7 @@ function paintFavs() {
     } else {
       img = fav.show.image.medium;
     }
-    favSeriesHtml += `<li class="list--li js-serieBox" id="${id}">`;
+    favSeriesHtml += `<li class="li--fav js-serieBox" id="${id}">`;
     favSeriesHtml += `<img src="${img}" width="200" height="200" class="img-fav" />`;
     favSeriesHtml += `<h3 class="serie-title">${title}</h3>`;
     favSeriesHtml += `<button class="js-delete-btn delete-btn">X</button>`;
