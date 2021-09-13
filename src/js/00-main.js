@@ -146,8 +146,7 @@ function deleteFavorite(ev) {
   setLocalStorage();
 }
 
-//funcion para borrar todas la series que están en favoritos a la vez pulsando un solo boton ¿?
-/*NO ME BORRA LAS FAVS DE LA WEB PERO SI DEL LS*/
+//funcion para borrar todas la series que están en favoritos a la vez pulsando un solo boton
 function deleteAllFavs() {
   deleteFromWeb();
   localStorage.clear();
