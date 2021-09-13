@@ -1,14 +1,8 @@
 .footer__container {
-    box-sizing: content-box;
-    height: 40px;
-    width: 100%;
-    text-align: center;
-    font-size: 12px;
-    background-color: rgba(143, 182, 255, 0.4);
-    bottom: 0;
-   &--small {
+    &--small{
+        font-size: 14px;
+        text-align: end;
+        margin: 10px auto 10px auto;
        position: relative;
-       top: 10px;
-       text-align: center;
-   }
+    }
 }
