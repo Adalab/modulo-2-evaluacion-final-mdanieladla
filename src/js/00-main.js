@@ -14,7 +14,7 @@ const btn = document.querySelector('.js-btn');
 //traemos el botón de reset de HTML
 const resetBtn = document.querySelector('.js-btn-delete');
 //traemos el icono de HTML
-//const deleteIcon = document.querySelector('.js-icon');
+const deleteIcon = document.querySelector('.js-icon');
 
 //funcion para que al pulsar el botón llame a la api
 function handleGetInfoSeries() {
@@ -147,14 +147,18 @@ function deleteFavorite(ev) {
 }
 
 //funcion para borrar todas la series que están en favoritos a la vez pulsando un solo boton ¿?
-/*NO ME BORRA LAS FAVS DE LA WEB PERO SI DEL LS
+/*NO ME BORRA LAS FAVS DE LA WEB PERO SI DEL LS*/
 function deleteAllFavs() {
-  setLocalStorage();
+  deleteFromWeb();
   localStorage.clear();
 }
 
 deleteIcon.addEventListener('click', deleteAllFavs);
-*/
+
+function deleteFromWeb() {
+  seriesFavourites.remove();
+
+}
 
 //funcion para añadir la info al local storage
 function setLocalStorage() {
