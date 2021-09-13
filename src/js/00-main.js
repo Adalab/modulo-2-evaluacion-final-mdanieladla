@@ -189,7 +189,7 @@ function getLocalStorage() {
     //no tengo datos asi que llamo al API
     getApi();
   } else {
-    //si tengo datos en el LS, los parseo a un array
+    //si tengo datos en el LS, los parseo a un JSON
     const arrayFavs = JSON.parse(localStorageSeries);
     //y los guardo en la variable global de series favoritas
     seriesFavs = arrayFavs;
