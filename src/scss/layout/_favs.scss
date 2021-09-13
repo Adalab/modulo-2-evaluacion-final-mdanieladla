@@ -7,11 +7,11 @@
 }
 
 .title-fav {
-    color: black;
+    color: $black;
     text-align: center;
     margin-bottom: 10px;
     font-weight: bold;
-    //text-shadow: 2px 2px;
+
 }
 
 .li--fav {
@@ -19,7 +19,7 @@
     font-weight: bold;
     color: blueviolet;
     margin-bottom: 10px;
-    border: 3px solid #062F4F;
+    border: 3px solid $ink;
     margin-left: 10px;
     margin-bottom: 10px;
 }
@@ -35,6 +35,6 @@
     border-radius: 15px;
     cursor: pointer;
     background: transparent;
-    border: 1px solid white;
+    border: 1px solid $white;
     box-shadow: 4px 4px 4px;
 }
