@@ -1,9 +1,15 @@
 .footer__container {
+    box-sizing: content-box;
     height: 40px;
-    text-align: right;
+    width: 100%;
+    text-align: center;
     font-size: 12px;
     background-color: rgba(143, 182, 255, 0.4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: fixed;
+    bottom: 0;
+   &--small {
+       position: relative;
+       top: 10px;
+       text-align: center;
+   }
 }
