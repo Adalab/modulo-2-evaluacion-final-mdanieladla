@@ -1,9 +1,8 @@
 .header__container{
     height: 10vh;
     background: linear-gradient(to right, rgb(236, 169, 254), rgb(158, 200, 255));;
-    //background: linear-gradient(to right, rgb(207, 102, 255), rgb(112, 181, 255));
-    //background: linear-gradient(to right, rgb(112, 181, 255), rgb(207, 102, 255));;
-    &--title{
+    &--title{ 
+    color: $ink;
     padding-top: 10px;
     text-align: center;
     font-size: 28px;
