@@ -1,25 +1,5 @@
-/*POSIBLES COLORES PARA LA WEB: 
-PALETA 1:
-ICE -> #99D3DF
-FRESH WATER -> 88BBD6
-PLASTER -> CDCDCD
-LINEN -> E9E9E9
-
-PALETA 2:
-RUST -> B56357
-MIN -> B4DBC0
-SLATE -> EAE3EA
-SEA FOAM -> A783A5
-
-PLAETA 3:
-BLACK -> 000
-INK -> 062F4F
-POSY -> 813772
-EMBERS -> B82601
-*/
-
 .body {
-    font-family: 'Kaisei Tokumin', serif;;
+    font-family: 'Kaisei Tokumin', serif;
     height: 100vh;
     background: linear-gradient(to right, rgb(236, 169, 254), rgb(158, 200, 255));;
 }
@@ -35,11 +15,9 @@ EMBERS -> B82601
   border-radius: 20px;
   border-left: 1px solid white;
   box-shadow: 20px 20px 40px -6px rgba(0,0,0,0.2);
-  //text-align: center;
     &--fieldset{
     padding: 30px;
     margin: 0 80px 0 80px;
-    //text-align: center;
     }
     &--input{
     width: 70%;
@@ -48,11 +26,9 @@ EMBERS -> B82601
     margin-bottom: 2em;
     border: none;
     border-radius: 15px;
-    border-left: 1px solid white;
-    border-right: 1px solid white;
-    border-top: 1px solid white;
-    //border: 1px solid white;
-    //backdrop-filter: blur(5px);
+    border-left: 1px solid $white;
+    border-right: 1px solid $white;
+    border-top: 1px solid $white;
     box-shadow: 4px 4px 5px;
     cursor: pointer;
     }
@@ -65,15 +41,15 @@ EMBERS -> B82601
         cursor: pointer;
         background: transparent;
         border-radius: 15px;
-        border: 1px solid white;
+        border: 1px solid $white;
         box-shadow: 4px 4px 4px;
     }
 }
 
 ::placeholder{
     font-size: 18px;
-    font-family: 'Kaisei';
-    color: #fff;
+    font-family: $brand-font;
+    color: $white;
     font-weight: 400;
 }
 
