@@ -20,9 +20,7 @@ Mi trabajo se encuentra en el repositorio de Github Pages. Puedes encontrar el l
 
 Se trata de una página web interactiva creada según unos criterios dados y con un diseño personalizado.
 
-- Qué partes tiene:
-
-Contiene tres partes claras:
+- Contiene tres partes:
 
 - Header compuesto por el título de la página y dos imágenes del emoji de palomitas.
 
