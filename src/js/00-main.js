@@ -16,14 +16,14 @@ const resetBtn = document.querySelector('.js-btn-delete');
 // * traemos el icono de HTML * \\
 const deleteIcon = document.querySelector('.js-icon');
 
-// *** funcion para que al pulsar el botón llame a la api *** \\\
+// *** función para que al pulsar el botón llame a la api *** \\\
 function handleGetInfoSeries() {
   getApi();
 }
 
 btn.addEventListener('click', handleGetInfoSeries);
 
-// *** funcion para pintar las series *** \\\
+// *** función para pintar las series *** \\\
 function paintSeries() {
   let html = '';
   let favClass = '';
@@ -51,20 +51,20 @@ function paintSeries() {
   listenSerie();
 }
 
-// *** funcion para prevenir que el btn recargue la pagina por defecto *** \\\
+// *** función para prevenir que el btn recargue la pagina por defecto *** \\\
 function preventBtn(ev) {
   ev.preventDefault();
 }
 
 btn.addEventListener('click', preventBtn);
 
-// *** funcion para que me diga donde he hecho click *** \\\
+// *** función para que me diga donde he hecho click *** \\\
 function handleClickEv(ev) {
   //obtener el id de la serie clickada
   const serieId = parseInt(ev.currentTarget.id);
   //busco el id de la serie clickada en el array de series
   const serieClicked = series.find( serieObject => serieObject.show.id === serieId );
-  //busco la posicion del elemento que clicko en el array de favs
+  //busco la posición del elemento que clicko en el array de favs
   const favsFound = seriesFavs.findIndex((fav) => {
     return fav.show.id === serieId;
   });
@@ -80,7 +80,7 @@ function handleClickEv(ev) {
   setLocalStorage();
 }
 
-// *** funcion para clickar sobre el li que contiene la serie *** \\\
+// *** función para clickar sobre el li que contiene la serie *** \\\
 function listenSerie() {
   const serieBox = document.querySelectorAll('.js-serieBox');
   for (const serieLi of serieBox) {
@@ -88,8 +88,9 @@ function listenSerie() {
   }
 }
 
-// *** funcion para pintar las series favoritas *** \\\
+// *** función para pintar las series favoritas *** \\\
 function paintFavs() {
+  seriesFavourites.innerHTML = '';
   let favSeriesHtml = '<li class="title-fav">Series favoritas: </li>';
   for (const fav of seriesFavs) {
     let title = fav.show.name;
@@ -104,13 +105,13 @@ function paintFavs() {
     favSeriesHtml += `<li class="li--fav js-serieBox" id="${id}">`;
     favSeriesHtml += `<img src="${img}" width="200" height="200" class="img-fav" />`;
     favSeriesHtml += `<h3 class="serie-title">${title}</h3>`;
-    favSeriesHtml += `<button class="js-delete-btn delete-btn">X</button>`;
+    favSeriesHtml += `<button  id="${id}" class="js-delete-btn delete-btn">X</button>`;
     favSeriesHtml += `</li>`;
   }
   seriesFavourites.innerHTML = favSeriesHtml;
 }
 
-//funcion para buscar si la serie se encuentra dentro de favoritos o no
+// *** función para buscar si la serie se encuentra dentro de favoritos o no ***\\\
 function isFav(serie){
   const favoriteFound = seriesFavs.find((fav) => {
     return fav.show.id === serie.show.id;
@@ -123,7 +124,7 @@ function isFav(serie){
 }
 
 
-// *** funcion para eliminar los favs desde el botón X de cada uno *** \\\
+// *** función para eliminar los favs desde el botón X de cada uno *** \\\
 function deleteFavSerie() {
   const deleteBtn = document.querySelectorAll('.js-delete-btn');
   for (const removeBtn of deleteBtn) {
@@ -131,7 +132,7 @@ function deleteFavSerie() {
   }
 }
 
-// *** funcion para saber cual es el id de la serie que clickamos para quitar de favoritos y poder quitar del LS el que coincida con el ID que clickamos. *** \\\
+// *** función para saber cual es el id de la serie que clickamos para quitar de favoritos y poder quitar del LS el que coincida con el ID que clickamos. *** \\\
 function deleteFavorite(ev) {
   const selectedSerieId = parseInt(ev.currentTarget.id);
   const clickedSerie = seriesFavs.findIndex((fav) => {
@@ -140,10 +141,12 @@ function deleteFavorite(ev) {
   if (clickedSerie !== -1) {
     seriesFavs.splice(clickedSerie, 1);
   }
+  paintFavs();
+  paintSeries();
   setLocalStorage();
 }
 
-// *** funcion para borrar todas la series de favoritos del LS a la vez pulsando un solo boton *** \\\
+// *** función para borrar todas la series de favoritos del LS a la vez pulsando un solo botón *** \\\
 function deleteAllFavs() {
   deleteFromWeb();
   localStorage.clear();
@@ -151,20 +154,20 @@ function deleteAllFavs() {
 
 deleteIcon.addEventListener('click', deleteAllFavs);
 
-// *** funcion para borrar todas las series favoritas a la vez de la web *** \\\
+// *** función para borrar todas las series favoritas a la vez de la web *** \\\
 function deleteFromWeb() {
   seriesFavourites.remove();
 
 }
 
-// *** funcion para añadir la info al local storage *** \\\
+// *** función para añadir la info al local storage *** \\\
 function setLocalStorage() {
   const stringSeries = JSON.stringify(seriesFavs);
   //añadimos a LS los datos
   localStorage.setItem('seriesFavs', stringSeries);
 }
 
-// *** funcion para llamar a la api *** \\\
+// *** función para llamar al api *** \\\
 function getApi() {
   const getInfo = input.value;
   const url = `http://api.tvmaze.com/search/shows?q=${getInfo}`;
@@ -177,9 +180,9 @@ function getApi() {
     });
 }
 
-// *** almacenar listado de series favs en localStorage para no tener que hacer peticion al servidor cada vez que cargue la página *** \\\
+// *** almacenar listado de series favs en localStorage para no tener que hacer petición al servidor cada vez que cargue la página *** \\\
 function getLocalStorage() {
-//Obtenemos lo que hay en el localStorage (con getItem)
+//Obtenemos lo que hay en el localStorage
   const localStorageSeries = localStorage.getItem('seriesFavs');
   //comprobar si tengo datos o es la primera vez que entro a la página
   if (localStorageSeries === null) {
@@ -190,7 +193,7 @@ function getLocalStorage() {
     const arrayFavs = JSON.parse(localStorageSeries);
     //y los guardo en la variable global de series favoritas
     seriesFavs = arrayFavs;
-    //cada vez que modifico los arrays de sries favoritas lo vuelvo a pintar y a escuchar eventos.
+    //cada vez que modifico los arrays de series favoritas lo vuelvo a pintar y a escuchar eventos.
     paintFavs();
     deleteFavSerie();
   }
