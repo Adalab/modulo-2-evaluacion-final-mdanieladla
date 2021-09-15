@@ -1,22 +1,22 @@
 /* eslint-disable no-console */
-"use strict";
+'use strict';
 // * Arrays donde voy a guardar las series que me devuelve el servidor y las series favs * \\
 let series = [];
 let seriesFavs = [];
 // * donde voy a pintar mis series * \\
-let seriesList = document.querySelector(".js-series-list");
+let seriesList = document.querySelector('.js-series-list');
 // * donde voy a pintar mis series favoritas * \\
-const seriesFavourites = document.querySelector(".js-favs");
+const seriesFavourites = document.querySelector('.js-favs');
 // * traemos el input del HTML * \\
-const input = document.querySelector(".js-input");
+const input = document.querySelector('.js-input');
 // *traemos el botón de HTML * \\
-const btn = document.querySelector(".js-btn");
+const btn = document.querySelector('.js-btn');
 // * traemos el botón de reset de HTML * \\
-const resetBtn = document.querySelector(".js-btn-delete");
+const resetBtn = document.querySelector('.js-btn-delete');
 // * traemos el icono de HTML * \\
-const deleteIcon = document.querySelector(".js-icon");
+const deleteIcon = document.querySelector('.js-icon');
 // traemos elemento de donde pintamos los resultados.
-let results = document.querySelector(".js-results");
+let results = document.querySelector('.js-results');
 
 let arr = [2, 5, 9];
 
@@ -34,30 +34,30 @@ function handleRunLoop() {
   }
 }
 
-results.addEventListener("click", handleRunLoop);
+results.addEventListener('click', handleRunLoop);
 // *** función para que al pulsar el botón llame a la api *** \\\
 function handleGetInfoSeries() {
   getApi();
 }
 
-btn.addEventListener("click", handleGetInfoSeries);
+btn.addEventListener('click', handleGetInfoSeries);
 
 // *** función para pintar las series *** \\\
 function paintSeries() {
   results.innerHTML = `Número de series que coinciden: ${series.length}`;
-  let html = "";
-  let favClass = "";
+  let html = '';
+  let favClass = '';
   for (const serie of series) {
     const isFavorite = isFav(serie);
     if (isFavorite) {
-      favClass = "color-fav";
+      favClass = 'color-fav';
     } else {
-      favClass = "";
+      favClass = '';
     }
     const serieTitle = serie.show.name;
     let img = serie.show.image;
     let imgDefault =
-      "https://via.placeholder.com/210x295/ffffff/666666/?text=TV";
+      'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
     if (img === null) {
       img = imgDefault;
     } else {
@@ -65,7 +65,7 @@ function paintSeries() {
     }
     let dateOfPremiere = serie.show.premiered;
     if (dateOfPremiere === null) {
-      dateOfPremiere = "No se ha estrenado todavía.";
+      dateOfPremiere = 'No se ha estrenado todavía.';
     } else {
       dateOfPremiere;
     }
@@ -84,7 +84,7 @@ function preventBtn(ev) {
   ev.preventDefault();
 }
 
-btn.addEventListener("click", preventBtn);
+btn.addEventListener('click', preventBtn);
 
 // *** función para que me diga donde he hecho click *** \\\
 function handleClickEv(ev) {
@@ -112,22 +112,22 @@ function handleClickEv(ev) {
 
 // *** función para clickar sobre el li que contiene la serie *** \\\
 function listenSerie() {
-  const serieBox = document.querySelectorAll(".js-serieBox");
+  const serieBox = document.querySelectorAll('.js-serieBox');
   for (const serieLi of serieBox) {
-    serieLi.addEventListener("click", handleClickEv);
+    serieLi.addEventListener('click', handleClickEv);
   }
 }
 
 // *** función para pintar las series favoritas *** \\\
 function paintFavs() {
-  seriesFavourites.innerHTML = "";
+  seriesFavourites.innerHTML = '';
   let favSeriesHtml = '<li class="title-fav">Series favoritas: </li>';
   for (const fav of seriesFavs) {
     let title = fav.show.name;
     let id = fav.show.id;
     let img = fav.show.image;
     let imgDefault =
-      "https://via.placeholder.com/210x295/ffffff/666666/?text=TV";
+      'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
     if (img === null) {
       img = imgDefault;
     } else {
@@ -156,9 +156,9 @@ function isFav(serie) {
 
 // *** función para eliminar los favs desde el botón X de cada uno *** \\\
 function deleteFavSerie() {
-  const deleteBtn = document.querySelectorAll(".js-delete-btn");
+  const deleteBtn = document.querySelectorAll('.js-delete-btn');
   for (const removeBtn of deleteBtn) {
-    removeBtn.addEventListener("click", deleteFavorite);
+    removeBtn.addEventListener('click', deleteFavorite);
   }
 }
 
@@ -182,7 +182,7 @@ function deleteAllFavs() {
   localStorage.clear();
 }
 
-deleteIcon.addEventListener("click", deleteAllFavs);
+deleteIcon.addEventListener('click', deleteAllFavs);
 
 // *** función para borrar todas las series favoritas a la vez de la web *** \\\
 function deleteFromWeb() {
@@ -193,7 +193,7 @@ function deleteFromWeb() {
 function setLocalStorage() {
   const stringSeries = JSON.stringify(seriesFavs);
   //añadimos a LS los datos
-  localStorage.setItem("seriesFavs", stringSeries);
+  localStorage.setItem('seriesFavs', stringSeries);
 }
 
 // *** función para llamar al api *** \\\
@@ -212,7 +212,7 @@ function getApi() {
 // *** almacenar listado de series favs en localStorage para no tener que hacer petición al servidor cada vez que cargue la página *** \\\
 function getLocalStorage() {
   //Obtenemos lo que hay en el localStorage
-  const localStorageSeries = localStorage.getItem("seriesFavs");
+  const localStorageSeries = localStorage.getItem('seriesFavs');
   //comprobar si tengo datos o es la primera vez que entro a la página
   if (localStorageSeries === null) {
     //no tengo datos asi que llamo al API
@@ -236,4 +236,4 @@ function handleClickResetBtn() {
   location.reload();
 }
 
-resetBtn.addEventListener("click", handleClickResetBtn);
+resetBtn.addEventListener('click', handleClickResetBtn);
