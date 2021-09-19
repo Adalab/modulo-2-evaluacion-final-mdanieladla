@@ -173,21 +173,16 @@ function deleteFavorite(ev) {
   }
   paintFavs();
   paintSeries();
-  setLocalStorage();
 }
 
 // *** función para borrar todas la series de favoritos del LS a la vez pulsando un solo botón *** \\\
 function deleteAllFavs() {
-  deleteFromWeb();
+  seriesFavs = [];
+  paintFavs();
   localStorage.clear();
 }
 
 deleteIcon.addEventListener('click', deleteAllFavs);
-
-// *** función para borrar todas las series favoritas a la vez de la web *** \\\
-function deleteFromWeb() {
-  seriesFavourites.remove();
-}
 
 // *** función para añadir la info al local storage *** \\\
 function setLocalStorage() {
