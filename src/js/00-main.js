@@ -44,7 +44,7 @@ btn.addEventListener('click', handleGetInfoSeries);
 
 // *** función para pintar las series *** \\\
 function paintSeries() {
-  results.innerHTML = `Número de series que coinciden: ${series.length}`;
+  results.innerHTML = `<Número de series que coinciden: ${series.length}`;
   let html = '';
   let favClass = '';
   for (const serie of series) {
@@ -71,7 +71,7 @@ function paintSeries() {
     }
     html += `<li class="list--li js-serieBox ${favClass}" id="${serie.show.id}">`;
     html += `<img src="${img}" width="315" height="315" class="serie-img"/>`;
-    html += `<div> ${dateOfPremiere}</div>`;
+    html += `<div class="premiere"> ${dateOfPremiere}</div>`;
     html += `<h3 class="serie-title">${serieTitle}</h3>`;
     html += `</li>`;
   }
@@ -121,7 +121,8 @@ function listenSerie() {
 // *** función para pintar las series favoritas *** \\\
 function paintFavs() {
   seriesFavourites.innerHTML = '';
-  let favSeriesHtml = '<li class="title-fav">Series favoritas: </li>';
+  let favsTitle = `<li class="title-fav">Series favoritas: </li>`;
+  let favSeriesHtml = '';
   for (const fav of seriesFavs) {
     let title = fav.show.name;
     let id = fav.show.id;
@@ -139,7 +140,8 @@ function paintFavs() {
     favSeriesHtml += `<button  id="${id}" class="js-delete-btn delete-btn">X</button>`;
     favSeriesHtml += `</li>`;
   }
-  seriesFavourites.innerHTML = favSeriesHtml;
+  seriesFavourites.innerHTML += favsTitle;
+  seriesFavourites.innerHTML += favSeriesHtml;
 }
 
 // *** función para buscar si la serie se encuentra dentro de favoritos o no ***\\\
