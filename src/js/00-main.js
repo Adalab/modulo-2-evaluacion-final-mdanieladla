@@ -113,7 +113,6 @@ function listenSerie() {
 // *** función para pintar las series favoritas *** \\\
 function paintFavs() {
   seriesFavourites.innerHTML = '';
-  let favsTitle = `<li class="title-fav">Series favoritas: </li>`;
   let favSeriesHtml = '';
   for (const fav of seriesFavs) {
     let title = fav.show.name;
@@ -132,7 +131,6 @@ function paintFavs() {
     favSeriesHtml += `<button  id="${id}" class="js-delete-btn delete-btn">X</button>`;
     favSeriesHtml += `</li>`;
   }
-  seriesFavourites.innerHTML += favsTitle;
   seriesFavourites.innerHTML += favSeriesHtml;
 }
 
@@ -174,6 +172,7 @@ function deleteAllFavs() {
   seriesFavs = [];
   paintFavs();
   localStorage.clear();
+  paintSeries();
 }
 
 deleteIcon.addEventListener('click', deleteAllFavs);
