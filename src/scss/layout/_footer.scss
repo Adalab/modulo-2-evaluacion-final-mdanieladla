@@ -1,8 +1,12 @@
 .footer__container {
     &--small{
-        font-size: 14px;
+        width: 100%;
+        font-size: 12px;
         text-align: end;
         margin: 10px auto 10px auto;
        position: relative;
+       @media all and (min-width: 768px) {
+           font-size: 14px;
+       }
     }
 }
