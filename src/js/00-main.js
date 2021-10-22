@@ -15,27 +15,12 @@ const btn = document.querySelector('.js-btn');
 const resetBtn = document.querySelector('.js-btn-delete');
 // * traemos el icono de HTML * \\
 const deleteIcon = document.querySelector('.js-icon');
-// traemos elemento de donde pintamos los resultados.
+// * traemos elemento de donde pintamos los resultados * \\
 let results = document.querySelector('.js-results');
+// * traemos el formulario *\\
+const form = document.querySelector('.js-submit');
 
-let arr = [2, 5, 9];
-
-function handleRunLoop() {
-  for (const item of arr) {
-    if (series.length > item) {
-      console.log(
-        `El número de resultados es: ${series.length} y es mayor que ${item}`
-      );
-    } else {
-      console.log(
-        `El número de resultados es: ${series.length} y es menor que ${item}`
-      );
-    }
-  }
-}
-
-results.addEventListener('click', handleRunLoop);
-// *** función para que al pulsar el botón llame a la api *** \\\
+// *** función para que al pulsar el botón llame al api *** \\\
 function handleGetInfoSeries() {
   getApi();
 }
@@ -70,7 +55,7 @@ function paintSeries() {
       dateOfPremiere;
     }
     html += `<li class="list--li js-serieBox ${favClass}" id="${serie.show.id}">`;
-    html += `<img src="${img}" width="315" height="315" class="serie-img"/>`;
+    html += `<img src="${img}" class="serie-img"/>`;
     html += `<div class="premiere"> ${dateOfPremiere}</div>`;
     html += `<h3 class="serie-title">${serieTitle}</h3>`;
     html += `</li>`;
@@ -85,6 +70,13 @@ function preventBtn(ev) {
 }
 
 btn.addEventListener('click', preventBtn);
+
+// *** función para prevenir que se recargue la página al enviar el formulario *** \\\
+function handleForm(ev) {
+  ev.preventDefault();
+}
+
+form.addEventListener('submit', handleForm);
 
 // *** función para que me diga donde he hecho click *** \\\
 function handleClickEv(ev) {
@@ -135,7 +127,7 @@ function paintFavs() {
       img = fav.show.image.medium;
     }
     favSeriesHtml += `<li class="li--fav js-serieBox" id="${id}">`;
-    favSeriesHtml += `<img src="${img}" width="200" height="200" class="img-fav" />`;
+    favSeriesHtml += `<img src="${img}" class="img-fav" />`;
     favSeriesHtml += `<h3 class="serie-title">${title}</h3>`;
     favSeriesHtml += `<button  id="${id}" class="js-delete-btn delete-btn">X</button>`;
     favSeriesHtml += `</li>`;
