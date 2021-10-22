@@ -1,6 +1,5 @@
 .list {
     list-style: none;
-    width: 80%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -21,6 +20,12 @@
 
 .serie-img{
    margin-bottom: 10px;
+   width: 220px;
+   height: 220px;
+   @media all and (min-width:768px) {
+    width: 315px;
+    height: 315px;
+   }
 }
 
 .color-fav {
