@@ -196,7 +196,7 @@ function setLocalStorage() {
 // *** función para llamar al api *** \\\
 function getApi() {
   const getInfo = input.value;
-  const url = `http://api.tvmaze.com/search/shows?q=${getInfo}`;
+  const url = `https://api.tvmaze.com/search/shows?q=${getInfo}`;
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
